@@ -13,6 +13,7 @@
     var init_clone_val;
 
     this.element = $(element);
+    var dataoptions = this.element.data();	
 
     this.options = $.extend({
       pickerClass: 'wpd',
@@ -32,7 +33,7 @@
       allowEmpty: false,
       inputOutputFormat: 'U', // default to unix timestamp
       animationDuration: 400,
-      useFadeInOut: !$.browser.msie, // dont animate fade-in/fade-out for IE
+      useFadeInOut: true, 	//	!$.browser.msie, // dont animate fade-in/fade-out for IE
       startView: 'month', // allowed values: {time, month, year, decades}
       positionOffset: { x: 0, y: 0 },
       minDate: null, // { date: '[date-string]', format: '[date-string-interpretation-format]' }
@@ -45,7 +46,7 @@
       onShow: $.noop,   // triggered when will_pickdate pops up
       onClose: $.noop,  // triggered after will_pickdate is closed (destroyed)
       onSelect: $.noop  // triggered when a date is selected
-    }, options);
+    }, options, dataoptions);
 
     if(!this.options.initializeDate) {
       this.options.initializeDate = new Date();
